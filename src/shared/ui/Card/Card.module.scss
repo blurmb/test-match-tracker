@@ -8,4 +8,16 @@
   &.darker {
     background-color: var(--color-background-secondary-variant2);
   }
+
+  &.accent {
+    background-color: var(--color-accent);
+  }
+
+  &.accent-secondary {
+    background-color: var(--color-accent-secondary);
+  }
+
+  &.primary {
+    background-color: var(--color-primary);
+  }
 }
