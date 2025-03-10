@@ -6,3 +6,17 @@
   box-sizing: border-box;
   font-family: 'Inter', "Open Sans", sans-serif;
 }
+
+:root {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  // colors
+  --color-background: #06080C;
+  --color-text: #fff;
+
+  // fonts
+
+  // spacings
+  --spacing-lg: 20px;
+  --spacing-xl: 42px;
+}
