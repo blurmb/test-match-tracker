@@ -1,4 +1,5 @@
-# 🚀 Тестовое задание 1  ![Static Badge](https://img.shields.io/badge/Done-93e67c?logo=checkmarx)
+# 🚀 Тестовое задание 1  ![Static Badge](https://img.shields.io/badge/Done-93e67c?logo=checkmarx) ![Static Badge](https://img.shields.io/badge/-black?logo=githubpages&logoSize=auto&link=https%3A%2F%2Fblurmb.github.io%2Ftest-match-tracker%2F)
+
 Разработать простое веб-приложение "Матч-трекер",которое:
   * Загружает список матчей с API.
   * Показывает названия команд, счет, статус матча.
