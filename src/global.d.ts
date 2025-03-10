@@ -15,4 +15,3 @@ declare module "*.webp";
 declare module "*.woff";
 declare module "*.woff2";
 
-declare const PUBLIC_URL: string;

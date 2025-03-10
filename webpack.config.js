@@ -3,10 +3,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require("webpack");
 
-const PUBLIC_URL = process.env.PUBLIC_URL;
 module.exports = (_, argv) => {
   const isDev = argv.mode === "development";
-  console.log("PUBLIC_URL", PUBLIC_URL);
   return {
     entry: "./src/index",
     output: {
@@ -89,9 +87,6 @@ module.exports = (_, argv) => {
       new MiniCssExtractPlugin({
         filename: isDev ? "[name].css" : "[name].[fullhash].css",
         chunkFilename: isDev ? "[id].css" : "[id].[fullhash].css",
-      }),
-      new webpack.DefinePlugin({
-        PUBLIC_URL: JSON.stringify(PUBLIC_URL),
       }),
     ],
     devtool: isDev && "inline-source-map",
