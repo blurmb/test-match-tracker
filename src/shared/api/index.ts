@@ -3,11 +3,16 @@ const fetchApi = (...[url, options]: Parameters<typeof fetch>) =>
   fetch(BASE_API_URL + url, options);
 
 export const matchesApi = {
-  getMatches: (): Promise<MatchesApi.GetMatchesResponse> =>
-    fetchApi("/fronttemp", { method: "GET" }).then((r) => r.json()),
+  getMatches: ({
+    signal,
+  }: MatchesApi.GetMatchesParams): Promise<MatchesApi.GetMatchesResponse> =>
+    fetchApi("/fronttemp", { method: "GET", signal }).then((r) => r.json()),
 };
 
 export namespace MatchesApi {
+  export type GetMatchesParams = {
+    signal?: AbortSignal;
+  };
   export type GetMatchesResponse = {
     ok: boolean;
     data?: DataMatches[];
