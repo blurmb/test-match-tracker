@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { StateSchema } from "@src/shared/store/types";
+import { StateSchema } from "@src/store/types";
 import { PropsWithChildren } from "react";
 import { Provider } from "react-redux";
 
