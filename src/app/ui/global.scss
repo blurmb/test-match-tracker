@@ -12,6 +12,7 @@
   color: var(--color-text);
   // colors
   --color-background: #06080C;
+  --color-background-secondary: #0F1318;
   --color-primary: #EB0237;
   --color-text: #fff;
 
@@ -27,8 +28,11 @@
   --font-weight-bold: 700;
 
   // spacings
+  --spacing-xs: 10px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
   --spacing-lg: 20px;
-  --spacing-xl: 42px;
+  --spacing-xl: 40px;
 
   // border
   --border-radius-sm: 4px;
