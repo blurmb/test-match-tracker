@@ -2,8 +2,27 @@ import { Card } from "@src/shared/ui/Card";
 
 import classes from "./ListItem.module.scss";
 import { Match, MatchStatus as MatchStatusType } from "@src/entities/Match";
-import { DefaultTeamLogo } from "@src/shared/assets/icons";
+import { AlertIcon, DefaultTeamLogo } from "@src/shared/assets/icons";
 import { MatchStatusCard } from "@src/features/MatchStatusCard";
+import classNames from "classnames";
+
+export type ListItemSkeletonProps = {
+  isLoading: boolean;
+  isError: boolean;
+};
+export const ListItemSkeleton = ({
+  isLoading,
+  isError,
+}: ListItemSkeletonProps) => (
+  <Card
+    variant="darker"
+    className={classNames(classes.card, classes.skeleton, {
+      [classes.loading]: isLoading,
+    })}
+  >
+    {isError && <AlertIcon />}
+  </Card>
+);
 
 export type ListItemProps = {
   match: Match;
