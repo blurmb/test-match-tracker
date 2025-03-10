@@ -12,14 +12,22 @@ import {
   getMatchesLoading,
 } from "@src/entities/Match";
 
+type RefreshButtonProps = Pick<ButtonProps, "onClick" | "disabled"> & {
+  isLoading: boolean;
+};
 const RefreshButton = ({
   onClick,
   disabled,
-}: Pick<ButtonProps, "onClick" | "disabled">) => (
+  isLoading,
+}: RefreshButtonProps) => (
   <Button variant="primary" size="md" onClick={onClick} disabled={disabled}>
     <div className={classes.refreshButton}>
       <span>Обновить</span>
-      <RefreshIcon />
+      <RefreshIcon
+        className={classNames(classes.refreshIcon, {
+          [classes.loading]: isLoading,
+        })}
+      />
     </div>
   </Button>
 );
@@ -27,7 +35,7 @@ export const MatchTrackerPageHeader = () => {
   const dispatch = useAppDispatch();
   const error = useAppSelector(getMatchesError);
   const isError = error && error !== "aborted";
-  const data = useAppSelector((state) => state.matches);
+  const isLoading = useAppSelector(getMatchesLoading);
 
   const handleUpdate = useCallback(() => {
     const abortController = new AbortController();
@@ -46,7 +54,11 @@ export const MatchTrackerPageHeader = () => {
           <AlertIcon />
           <span>Ошибка: не удалось загрузить информацию</span>
         </Card>
-        <RefreshButton onClick={handleUpdate} />
+        <RefreshButton
+          onClick={handleUpdate}
+          disabled={isLoading}
+          isLoading={isLoading}
+        />
       </div>
     </div>
   );
