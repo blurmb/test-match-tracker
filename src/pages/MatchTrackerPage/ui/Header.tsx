@@ -4,7 +4,13 @@ import classes from "./Header.module.scss";
 import { AlertIcon, RefreshIcon } from "@src/shared/assets/icons";
 import { Card } from "@src/shared/ui";
 import classNames from "classnames";
-import { useState } from "react";
+import { useCallback, useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "@src/store/hooks";
+import {
+  fetchMatchesThunk,
+  getMatchesError,
+  getMatchesLoading,
+} from "@src/entities/Match";
 
 const RefreshButton = ({
   onClick,
@@ -18,7 +24,18 @@ const RefreshButton = ({
   </Button>
 );
 export const MatchTrackerPageHeader = () => {
-  const [isError, setIsError] = useState(true); // TODO: entity update
+  const dispatch = useAppDispatch();
+  const error = useAppSelector(getMatchesError);
+  const isError = error && error !== "aborted";
+  const data = useAppSelector((state) => state.matches);
+
+  const handleUpdate = useCallback(() => {
+    const abortController = new AbortController();
+    dispatch(fetchMatchesThunk({ signal: abortController.signal }));
+
+    return () => abortController.abort("aborted");
+  }, [dispatch]);
+
   return (
     <div className={classes.wrapper}>
       <MatchTrackerLogo />
@@ -29,7 +46,7 @@ export const MatchTrackerPageHeader = () => {
           <AlertIcon />
           <span>Ошибка: не удалось загрузить информацию</span>
         </Card>
-        <RefreshButton onClick={() => setIsError((e) => !e)} />
+        <RefreshButton onClick={handleUpdate} />
       </div>
     </div>
   );
