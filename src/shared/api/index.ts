@@ -15,7 +15,7 @@ export namespace MatchesApi {
   };
   export type GetMatchesResponse = {
     ok: boolean;
-    data?: DataMatches[];
+    data?: DataMatches;
   };
   export type DataMatches = {
     matches: Match[];
