@@ -2,7 +2,7 @@ import { Button, ButtonProps } from "@src/shared/ui";
 import { MatchTrackerLogo } from "./assets/icons";
 import classes from "./Header.module.scss";
 import { AlertIcon, RefreshIcon } from "@src/shared/assets/icons";
-import { Card } from "@src/shared/ui/Card";
+import { Card } from "@src/shared/ui";
 import classNames from "classnames";
 import { useState } from "react";
 
