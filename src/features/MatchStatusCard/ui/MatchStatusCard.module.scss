@@ -1,0 +1,15 @@
+.card {
+  min-width: 92px;
+  padding: var(--spacing-xxs) var(--spacing-xxxs);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+
+  &.scheduled {
+    padding: var(--spacing-xxs) var(--spacing-xsmd);
+  }
+}
