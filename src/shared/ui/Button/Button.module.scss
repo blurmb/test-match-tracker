@@ -1,0 +1,48 @@
+.button {
+  color: var(--color-text);
+  border: none;
+  border-radius: var(--border-radius-sm);
+
+  transition: background-color 0.1s ease-in-out;
+
+  &.primary {
+    background-color: var(--color-primary);
+  }
+
+  &.sm {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-regular);
+  }
+
+  &.md {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  &.lg {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:hover:disabled {
+    cursor: not-allowed;
+  }
+
+  &:active {
+    background-color: #A01131; // такое, наверное в globals как серый цвет для mix / color-mix
+    // нужно добавлять, но в макете нет такого
+  }
+
+  &:disabled {
+    background-color: #701328; // тут тоже
+    color: #787878;
+
+    * {
+      fill: #787878;
+    }
+  }
+}
