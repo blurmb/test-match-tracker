@@ -18,7 +18,6 @@ export const Button = ({
   disabled,
   className,
 }: ButtonProps) => {
-  console.log(classes[variant]);
   return (
     <button
       className={classNames(
