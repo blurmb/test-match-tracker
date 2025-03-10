@@ -21,7 +21,7 @@ export namespace MatchesApi {
     matches: Match[];
   };
   export interface Match {
-    time: Date;
+    time: string;
     title: string;
     homeTeam: Team;
     awayTeam: Team;
