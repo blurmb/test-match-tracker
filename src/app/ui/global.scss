@@ -22,6 +22,7 @@
 
   // fonts
   --font-size-sm: 12px;
+  --font-size-smmd: 16px; // такой макет
   --font-size-md: 18px;
   --font-size-lg: 24px;
 
@@ -32,8 +33,12 @@
   --font-weight-bold: 700;
 
   // spacings
+  --spacing-xxxs: 2px;
+  --spacing-xxs: 6px;
+  --spacing-xsmd: 8px;
   --spacing-xs: 10px;
   --spacing-sm: 12px;
+  --spacing-smmd: 14px; // такой макет
   --spacing-smmmd: 15px; // такой макет
   --spacing-md: 16px;
   --spacing-lg: 20px;

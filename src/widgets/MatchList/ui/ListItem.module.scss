@@ -1,0 +1,33 @@
+.card {
+  padding: var(--spacing-md);
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  font-weight: var(--font-weight-semibold);
+
+  .command {
+    font-size: var(--font-size-smmd);
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-smmd);
+
+    &:last-child {
+      flex-direction: row-reverse;
+    }
+  }
+
+  .status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .score {
+      font-size: var(--font-size-lg);
+    }
+  }
+}
