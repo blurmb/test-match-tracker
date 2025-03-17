@@ -7,6 +7,11 @@
   font-family: 'Inter', "Open Sans", sans-serif;
 }
 
+ul,
+li {
+  list-style: none;
+}
+
 :root {
   background-color: var(--color-background);
   color: var(--color-text);
