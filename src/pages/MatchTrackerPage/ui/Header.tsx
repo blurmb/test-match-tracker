@@ -10,6 +10,7 @@ import {
   fetchMatchesThunk,
   getMatchesError,
   getMatchesLoading,
+  useMatchesAutoUpdate,
 } from "@src/entities/Match";
 import { MatchFilterListBox } from "@src/features/MatchFilterListBox";
 
@@ -45,6 +46,8 @@ export const MatchTrackerPageHeader = () => {
     return () => abortController.abort("aborted");
   }, [dispatch]);
 
+  useMatchesAutoUpdate();
+
   return (
     <div className={classes.wrapper}>
       <MatchTrackerLogo className={classes.logo} />
@@ -60,11 +63,15 @@ export const MatchTrackerPageHeader = () => {
           <AlertIcon />
           <span>Ошибка: не удалось загрузить информацию</span>
         </Card>
-        <RefreshButton
-          onClick={handleUpdate}
-          disabled={isLoading}
-          isLoading={isLoading}
-        />
+        {__FEATURES__.AUTO_UPDATE ? (
+          <></>
+        ) : (
+          <RefreshButton
+            onClick={handleUpdate}
+            disabled={isLoading}
+            isLoading={isLoading}
+          />
+        )}
       </div>
     </div>
   );
