@@ -1,6 +1,11 @@
-export type { Match, MatchStatus, MatchesSliceState } from "./model/types";
+export type {
+  Match,
+  MatchStatus,
+  MatchesSliceState,
+  MatchFilter,
+} from "./model/types";
 export { fetchMatchesThunk } from "./api/fetchMatchesThunk";
-export { matchesSlice } from "./model/slice";
+export { matchesSlice, setFilter } from "./model/slice";
 export {
   getMatches,
   getMatchesError,

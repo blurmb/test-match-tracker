@@ -1,6 +1,7 @@
 import { Team } from "@src/entities/Team";
 
 export type MatchStatus = "Scheduled" | "Ongoing" | "Finished";
+export type MatchFilter = MatchStatus | "All";
 
 export type Match = {
   time: string;
@@ -16,4 +17,5 @@ export type MatchesSliceState = {
   matches: Match[];
   isLoading: boolean;
   error?: string;
+  filter?: MatchStatus;
 };
