@@ -59,7 +59,15 @@ module.exports = (_, argv) => {
                 esModule: false,
               },
             },
-            "sass-loader",
+            {
+              loader: "sass-loader",
+              options: {
+                sourceMap: isDev,
+                additionalData: `
+                  @use "@src/app/ui/mixins.scss" as *;
+                `,
+              },
+            },
           ],
         },
         {
