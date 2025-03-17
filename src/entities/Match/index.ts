@@ -10,4 +10,6 @@ export {
   getMatches,
   getMatchesError,
   getMatchesLoading,
+  getMatchesFilter,
+  getFilteredMatches,
 } from "./model/selectors";
