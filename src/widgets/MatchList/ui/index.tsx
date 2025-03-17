@@ -1,6 +1,6 @@
 import classes from "./MatchList.module.scss";
 import {
-  getMatches,
+  getFilteredMatches,
   getMatchesError,
   getMatchesLoading,
 } from "@src/entities/Match";
@@ -8,7 +8,7 @@ import { ListItem, ListItemSkeleton } from "./ListItem";
 import { useAppSelector } from "@src/store/hooks";
 
 export const MatchList = () => {
-  const data = useAppSelector(getMatches);
+  const data = useAppSelector(getFilteredMatches);
   const isLoading = useAppSelector(getMatchesLoading);
   const error = useAppSelector(getMatchesError);
   const isError = (error && error !== "aborted") || false;
