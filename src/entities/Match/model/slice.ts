@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { MatchesSliceState, MatchFilter } from "./types";
+import { Match, MatchesSliceState, MatchFilter } from "./types";
 import { fetchMatchesThunk } from "../api/fetchMatchesThunk";
 
 const initialState: MatchesSliceState = {
@@ -17,6 +17,16 @@ export const matchesSlice = createSlice({
         return;
       }
       state.filter = action.payload;
+    },
+    setMatches: (state, action: PayloadAction<Match[]>) => {
+      state.matches = action.payload;
+      state.isLoading = false;
+      state.error = undefined;
+    },
+    setError: (state, action: PayloadAction<string>) => {
+      state.error = action.payload;
+      state.isLoading = false;
+      state.matches = [];
     },
   },
   extraReducers: (builder) => {
@@ -38,4 +48,4 @@ export const matchesSlice = createSlice({
   },
 });
 
-export const { setFilter } = matchesSlice.actions;
+export const { setFilter, setMatches, setError } = matchesSlice.actions;

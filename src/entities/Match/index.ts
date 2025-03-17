@@ -5,7 +5,7 @@ export type {
   MatchFilter,
 } from "./model/types";
 export { fetchMatchesThunk } from "./api/fetchMatchesThunk";
-export { matchesSlice, setFilter } from "./model/slice";
+export { matchesSlice, setFilter, setMatches, setError } from "./model/slice";
 export {
   getMatches,
   getMatchesError,
