@@ -4,7 +4,7 @@ import classes from "./Header.module.scss";
 import { AlertIcon, RefreshIcon } from "@src/shared/assets/icons";
 import { Card } from "@src/shared/ui";
 import classNames from "classnames";
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import { useAppDispatch, useAppSelector } from "@src/store/hooks";
 import {
   fetchMatchesThunk,
