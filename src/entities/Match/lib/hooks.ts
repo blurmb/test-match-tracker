@@ -9,7 +9,6 @@ class SocketService {
   private dispatch?: DispatchCB;
   private onMessage = (event: MessageEvent) => {
     const data = JSON.parse(event.data) as MatchesApi.MatchSocketMessage;
-    console.log(data.data);
     this.dispatch?.(data);
   };
   connect(dispatch: DispatchCB) {
