@@ -5,6 +5,7 @@ import { Match, MatchStatus as MatchStatusType } from "@src/entities/Match";
 import { AlertIcon, DefaultTeamLogo } from "@src/shared/assets/icons";
 import { MatchStatusCard } from "@src/features/MatchStatusCard";
 import classNames from "classnames";
+import { useEffect, useState } from "react";
 
 export type ListItemSkeletonProps = {
   isLoading: boolean;
@@ -53,11 +54,41 @@ const MatchStatus = ({
 }: {
   status: MatchStatusType;
   score: [number, number];
-}) => (
-  <div className={classes.status}>
-    <span className={classes.score}>
-      {status === "Scheduled" ? "— : —" : score.join(" : ")}
-    </span>
-    <MatchStatusCard status={status} />
-  </div>
-);
+}) => {
+  const displayScoreHome = useSmoothScore(score[0]);
+  const displayScoreAway = useSmoothScore(score[1]);
+  return (
+    <div className={classes.status}>
+      <span className={classes.score}>
+        {status === "Scheduled"
+          ? "— : —"
+          : `${displayScoreHome} : ${displayScoreAway}`}
+      </span>
+      <MatchStatusCard status={status} />
+    </div>
+  );
+};
+
+const SCORE_CHANGE_TIME_MS = 250;
+const useSmoothScore = (score: number) => {
+  const [displayScore, setDisplayScore] = useState(score);
+  useEffect(() => {
+    const delta = score - displayScore;
+    let interval: ReturnType<typeof setInterval> | undefined;
+    if (delta !== 0) {
+      let iterations = Math.abs(delta);
+      interval = setInterval(
+        () => {
+          iterations--;
+          setDisplayScore((prev) => prev + (delta > 0 ? 1 : -1));
+          if (iterations === 0) {
+            clearInterval(interval);
+          }
+        },
+        SCORE_CHANGE_TIME_MS / Math.abs(delta),
+      );
+    }
+    return () => clearInterval(interval);
+  }, [score]);
+  return displayScore;
+};
