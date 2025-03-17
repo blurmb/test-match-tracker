@@ -13,3 +13,4 @@ export {
   getMatchesFilter,
   getFilteredMatches,
 } from "./model/selectors";
+export { useMatchesAutoUpdate } from "./lib/hooks";
