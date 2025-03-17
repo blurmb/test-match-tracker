@@ -3,35 +3,74 @@
   justify-content: space-between;
   align-items: center;
 
+  @include phone {
+    flex-direction: column;
+    gap: var(--spacing-md);
+    align-items: center;
+  }
+
   .refresh-block {
     display: flex;
+    width: 100%;
     align-items: stretch;
-    gap: var(--spacing-sm);
+    gap: 0;
+
+    &.error {
+      gap: var(--spacing-sm);
+    }
+
+    @include phone {
+      flex-direction: column;
+    }
 
     .alert {
       display: flex;
       align-items: center;
       gap: var(--spacing-xs);
-      padding: var(--spacing-md);
+
+      svg {
+        min-width: 28px;
+        min-height: 28px;
+      }
 
       opacity: 0;
-      transition: opacity 0.3s ease;
+      width: 100%;
+      transition: all 0.3s ease;
 
       &.error {
+        padding: var(--spacing-md);
         opacity: 1;
+
+        &>* {
+          display: unset;
+        }
+      }
+
+      &>* {
+        display: none;
       }
 
       span {
         font-size: var(--font-size-md);
         font-weight: var(--font-weight-medium);
+
+        @include phone {
+          font-size: var(--font-size-smmd);
+        }
       }
     }
 
     .refresh-button {
       display: flex;
+      justify-content: center;
       align-items: center;
       padding: var(--spacing-smmmd) var(--spacing-xxl);
       gap: var(--spacing-xs);
+
+      @include phone {
+        padding: var(--spacing-smmmd);
+        width: 100%;
+      }
 
       .refresh-icon {
         &.loading {
