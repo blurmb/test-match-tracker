@@ -11,6 +11,7 @@ import {
   getMatchesError,
   getMatchesLoading,
 } from "@src/entities/Match";
+import { MatchFilterListBox } from "@src/features/MatchFilterListBox";
 
 type RefreshButtonProps = Pick<ButtonProps, "onClick" | "disabled"> & {
   isLoading: boolean;
@@ -46,7 +47,8 @@ export const MatchTrackerPageHeader = () => {
 
   return (
     <div className={classes.wrapper}>
-      <MatchTrackerLogo />
+      <MatchTrackerLogo className={classes.logo} />
+      <MatchFilterListBox />
       <div
         className={classNames(classes.refreshBlock, {
           [classes.error]: isError,
