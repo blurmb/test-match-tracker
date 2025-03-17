@@ -47,7 +47,11 @@ export const MatchTrackerPageHeader = () => {
   return (
     <div className={classes.wrapper}>
       <MatchTrackerLogo />
-      <div className={classes.refreshBlock}>
+      <div
+        className={classNames(classes.refreshBlock, {
+          [classes.error]: isError,
+        })}
+      >
         <Card
           className={classNames(classes.alert, { [classes.error]: isError })}
         >
