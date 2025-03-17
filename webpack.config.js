@@ -96,6 +96,13 @@ module.exports = (_, argv) => {
         filename: isDev ? "[name].css" : "[name].[fullhash].css",
         chunkFilename: isDev ? "[id].css" : "[id].[fullhash].css",
       }),
+      new webpack.DefinePlugin({
+        __FEATURES__: JSON.stringify({
+          AUTO_UPDATE: JSON.stringify(
+            process.env.FEATURE_AUTOUPDATE === "true",
+          ),
+        }),
+      }),
     ],
     devtool: isDev && "inline-source-map",
     devServer: {
