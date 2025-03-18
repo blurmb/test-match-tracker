@@ -11,6 +11,9 @@ import { MatchStatusCard } from "@src/features/MatchStatusCard";
 import classNames from "classnames";
 import { useSmoothValue } from "@src/shared/lib/hooks";
 import { TeamStatsCard } from "@src/features/TeamStatsCard";
+import { Dispatch, SetStateAction, useState } from "react";
+import { Button } from "@src/shared/ui";
+import { Chevron } from "./assets/icons";
 
 export type ListItemSkeletonProps = {
   isLoading: boolean;
@@ -34,25 +37,57 @@ export type ListItemProps = {
   match: Match;
 };
 export const ListItem = ({ match }: ListItemProps) => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <Card variant="darker" className={classes.card}>
-      <div className={classes.briefContent}>
-        <CommandLabel command={match.homeTeam.name} />
-        <MatchStatus
-          status={match.status}
-          score={[match.homeScore, match.awayScore]}
+    <Card
+      variant="darker"
+      className={classNames(classes.card, { [classes.open]: isOpen })}
+    >
+      <div className={classes.brief}>
+        <div className={classes.briefContent}>
+          <CommandLabel command={match.homeTeam.name} />
+          <MatchStatus
+            status={match.status}
+            score={[match.homeScore, match.awayScore]}
+          />
+          <CommandLabel command={match.awayTeam.name} />
+        </div>
+        <OpenButton
+          setIsOpen={setIsOpen}
+          className={match.status === "Scheduled" ? classes.hidden : ""}
         />
-        <CommandLabel command={match.awayTeam.name} />
       </div>
-      <div className={classes.stats}>
-        <TeamStatsCard team={match.homeTeam} />
-        <Divider />
-        <TeamStatsCard team={match.awayTeam} />
-      </div>
+      {match.status !== "Scheduled" && (
+        <>
+          <div
+            className={classNames(classes.stats, { [classes.open]: isOpen })}
+          >
+            <TeamStatsCard team={match.homeTeam} />
+            <Divider />
+            <TeamStatsCard team={match.awayTeam} />
+          </div>
+          <OpenButton setIsOpen={setIsOpen} className={classes.mobile} />
+        </>
+      )}
     </Card>
   );
 };
 
+type OpenButtonProps = {
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+  className?: string;
+};
+const OpenButton = ({ setIsOpen, className }: OpenButtonProps) => {
+  return (
+    <Button
+      onClick={() => setIsOpen((prev) => !prev)}
+      className={classNames(classes.openButton, className)}
+      variant="naked"
+    >
+      <Chevron />
+    </Button>
+  );
+};
 const CommandLabel = ({ command }: { command: string }) => (
   <div className={classes.command}>
     <DefaultTeamLogo className={classes.logo} />

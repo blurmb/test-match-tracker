@@ -5,6 +5,42 @@
   min-height: 88px;
   padding: var(--spacing-md);
 
+  .openButton {
+    transition: transform 0.1s ease-in-out;
+
+    &.hidden {
+      visibility: hidden;
+    }
+
+    &.mobile {
+      display: none;
+    }
+
+    @include phone {
+      display: none;
+
+      &.mobile {
+        display: unset;
+        align-self: center;
+      }
+    }
+  }
+
+  &.open {
+    .openButton {
+      transform: rotate(180deg);
+    }
+  }
+
+  .brief {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-sm);
+
+    &>*:first-child {
+      flex-grow: 1;
+    }
+  }
 
   .briefContent {
 
@@ -92,10 +128,14 @@
   }
 
   .stats {
-    display: flex;
+    display: none;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+
+    &.open {
+      display: flex;
+    }
 
     .divider {
       display: none;
