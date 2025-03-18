@@ -78,8 +78,10 @@ export const useMatchesAutoUpdate = __FEATURES__.AUTO_UPDATE
         dispatch(setError("WebSocket error"));
       };
       useEffect(() => {
+        dispatch(setIsLoading(true));
         socketService.connect(dispatchCB, onError);
         return () => {
+          dispatch(setIsLoading(false));
           socketService.disconnect();
         };
       }, [dispatch]);
