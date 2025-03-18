@@ -7,7 +7,8 @@ export type CardVariant =
   | "darker"
   | "accent"
   | "accentSecondary"
-  | "primary";
+  | "primary"
+  | "secondary";
 export type CardProps = {
   children: React.ReactNode;
   className?: string;
