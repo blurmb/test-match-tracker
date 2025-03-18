@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Match, MatchesSliceState, MatchFilter } from "./types";
 import { fetchMatchesThunk } from "../api/fetchMatchesThunk";
+import { mapApiMatchToStore } from "../lib/internal";
 
 const initialState: MatchesSliceState = {
   matches: [],
@@ -44,7 +45,7 @@ export const matchesSlice = createSlice({
       })
       .addCase(fetchMatchesThunk.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.matches = action.payload.matches;
+        state.matches = action.payload.matches.map(mapApiMatchToStore);
         state.error = undefined;
       })
       .addCase(fetchMatchesThunk.rejected, (state, action) => {

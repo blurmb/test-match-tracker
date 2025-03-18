@@ -42,7 +42,7 @@ export namespace MatchesApi {
     players: Array<Player>;
     points: number;
     place: number;
-    totalKills: number;
+    total_kills: number;
   }
   export type MatchSocketMessage = {
     type: "update_matches";

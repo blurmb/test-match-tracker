@@ -3,6 +3,7 @@ import { useAppDispatch } from "@src/store/hooks";
 import { useEffect } from "react";
 import { setError, setIsLoading, setMatches } from "../model/slice";
 import { socketService } from "./socketService";
+import { mapApiMatchToStore } from "./internal";
 
 export const useMatchesAutoUpdate = __FEATURES__.AUTO_UPDATE
   ? () => {
@@ -13,7 +14,7 @@ export const useMatchesAutoUpdate = __FEATURES__.AUTO_UPDATE
           dispatch(setError("Unexpected matches type"));
           return;
         }
-        dispatch(setMatches(matches.data));
+        dispatch(setMatches(matches.data.map(mapApiMatchToStore)));
       };
       const onError = (error: CloseEvent) => {
         console.error("WebSocket error", error);
