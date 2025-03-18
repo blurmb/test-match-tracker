@@ -28,6 +28,12 @@ export const matchesSlice = createSlice({
       state.isLoading = false;
       state.matches = [];
     },
+    setIsLoading: (state, action: PayloadAction<boolean>) => {
+      state.isLoading = action.payload;
+      if (!action.payload) return;
+      state.error = undefined;
+      state.matches = [];
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -48,4 +54,5 @@ export const matchesSlice = createSlice({
   },
 });
 
-export const { setFilter, setMatches, setError } = matchesSlice.actions;
+export const { setFilter, setMatches, setError, setIsLoading } =
+  matchesSlice.actions;
