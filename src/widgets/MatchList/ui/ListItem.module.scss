@@ -5,6 +5,10 @@
   min-height: 88px;
   padding: var(--spacing-md);
 
+  @include phone {
+    padding: var(--spacing-xsmd);
+  }
+
   .openButton {
     transition: transform 0.1s ease-in-out;
 
@@ -132,6 +136,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    gap: var(--spacing-xl);
 
     &.open {
       display: flex;
@@ -142,6 +147,10 @@
     }
 
     @include phone {
+      gap: var(--spacing-xsmd);
+    }
+
+    @media (max-width: 1600px) {
       flex-direction: column;
 
       .divider {
