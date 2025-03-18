@@ -98,9 +98,7 @@ module.exports = (_, argv) => {
       }),
       new webpack.DefinePlugin({
         __FEATURES__: JSON.stringify({
-          AUTO_UPDATE: JSON.stringify(
-            process.env.FEATURE_AUTOUPDATE === "true",
-          ),
+          AUTO_UPDATE: process.env.FEATURE_AUTOUPDATE === "true",
         }),
       }),
     ],
