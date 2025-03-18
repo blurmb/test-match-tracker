@@ -1,0 +1,24 @@
+.wrapper {
+  display: flex;
+  gap: var(--spacing-xsmd);
+  align-items: center;
+
+  .label {
+    opacity: 0.4;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+
+    @include phone {
+      font-size: var(--font-size-xs);
+    }
+  }
+
+  .count {
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-smmd);
+
+    @include phone {
+      font-size: var(--font-size-sm);
+    }
+  }
+}
