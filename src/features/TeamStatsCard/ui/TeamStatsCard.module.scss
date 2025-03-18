@@ -1,0 +1,43 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: var(--spacing-xsmd);
+  justify-content: space-between;
+
+  .players {
+    display: flex;
+    gap: inherit;
+  }
+
+  .stats {
+    display: flex;
+    gap: inherit;
+    padding: var(--spacing-smmd) var(--spacing-sm);
+    background-color: var(--color-secondary);
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+
+    .label {
+      position: relative;
+      width: 100%;
+      justify-content: center;
+
+      &:not(:last-child)::after {
+        content: "";
+        display: block;
+        width: 1px;
+        height: 100%;
+        background-color: #141A21;
+        position: absolute;
+        top: 0;
+        right: calc(-1 * var(--spacing-xsmd) / 2);
+      }
+    }
+  }
+
+  .card {
+    flex-grow: 1;
+  }
+}
