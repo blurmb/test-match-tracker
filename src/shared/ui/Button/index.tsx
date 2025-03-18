@@ -3,7 +3,7 @@ import classes from "./Button.module.scss";
 
 export type ButtonProps = {
   children: React.ReactNode;
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "naked";
   onClick?: () => void;
   size?: "sm" | "md" | "lg";
   disabled?: boolean;

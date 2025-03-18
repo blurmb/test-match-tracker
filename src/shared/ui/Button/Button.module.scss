@@ -5,8 +5,26 @@
 
   transition: background-color 0.1s ease-in-out;
 
+  &.naked {
+    background-color: transparent;
+  }
+
   &.primary {
     background-color: var(--color-primary);
+
+    &:active {
+      background-color: #A01131; // такое, наверное в globals как серый цвет для mix / color-mix
+      // нужно добавлять, но в макете нет такого
+    }
+
+    &:disabled {
+      background-color: #701328; // тут тоже
+      color: #787878;
+
+      * {
+        fill: #787878;
+      }
+    }
   }
 
   &.secondary {
@@ -40,17 +58,4 @@
     cursor: not-allowed;
   }
 
-  &:active {
-    background-color: #A01131; // такое, наверное в globals как серый цвет для mix / color-mix
-    // нужно добавлять, но в макете нет такого
-  }
-
-  &:disabled {
-    background-color: #701328; // тут тоже
-    color: #787878;
-
-    * {
-      fill: #787878;
-    }
-  }
 }
