@@ -12,4 +12,10 @@
   &.scheduled {
     padding: var(--spacing-xxs) var(--spacing-xsmd);
   }
+
+  @include phone {
+    min-width: 72px;
+    max-width: 72px;
+    text-align: center;
+  }
 }

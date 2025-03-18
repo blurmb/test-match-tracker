@@ -2,7 +2,11 @@ import { Card } from "@src/shared/ui/Card";
 
 import classes from "./ListItem.module.scss";
 import { Match, MatchStatus as MatchStatusType } from "@src/entities/Match";
-import { AlertIcon, DefaultTeamLogo } from "@src/shared/assets/icons";
+import {
+  AlertIcon,
+  DefaultTeamLogo,
+  DefaultTeamLogoSmall,
+} from "@src/shared/assets/icons";
 import { MatchStatusCard } from "@src/features/MatchStatusCard";
 import classNames from "classnames";
 import { useSmoothValue } from "@src/shared/lib/hooks";
@@ -51,7 +55,8 @@ export const ListItem = ({ match }: ListItemProps) => {
 
 const CommandLabel = ({ command }: { command: string }) => (
   <div className={classes.command}>
-    <DefaultTeamLogo />
+    <DefaultTeamLogo className={classes.logo} />
+    <DefaultTeamLogoSmall className={classes.logoSmall} />
     <span>{command}</span>
   </div>
 );

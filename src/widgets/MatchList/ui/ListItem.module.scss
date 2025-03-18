@@ -27,10 +27,29 @@
         flex-direction: row-reverse;
       }
 
-      svg {
+      .logo {
         min-width: 48px;
         min-height: 48px;
       }
+
+      .logoSmall {
+        display: none;
+      }
+
+      @include phone {
+        font-size: var(--font-size-sm);
+
+        .logo {
+          display: none;
+        }
+
+        .logoSmall {
+          display: unset;
+          min-width: 28px;
+          min-height: 28px;
+        }
+      }
+
     }
 
     .status {
@@ -40,6 +59,10 @@
 
       .score {
         font-size: var(--font-size-lg);
+
+        @include phone {
+          font-size: var(--font-size-sm);
+        }
       }
     }
 
