@@ -1,57 +1,102 @@
 .card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  min-height: 88px;
   padding: var(--spacing-md);
 
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
 
-  font-weight: var(--font-weight-semibold);
-
-  .command {
-    font-size: var(--font-size-smmd);
+  .briefContent {
 
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: var(--spacing-smmd);
+    justify-content: space-between;
 
-    &:last-child {
-      flex-direction: row-reverse;
+    font-weight: var(--font-weight-semibold);
+
+    .command {
+      font-size: var(--font-size-smmd);
+
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: var(--spacing-smmd);
+
+      &:last-child {
+        flex-direction: row-reverse;
+      }
+
+      svg {
+        min-width: 48px;
+        min-height: 48px;
+      }
+    }
+
+    .status {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .score {
+        font-size: var(--font-size-lg);
+      }
+    }
+
+
+    &.skeleton {
+      background-color: var(--color-background-secondary-variant2);
+
+      &.loading {
+        animation: skeleton 1.5s infinite ease-in-out;
+
+
+        @keyframes skeleton {
+          0% {
+            background-color: var(--color-background-secondary-variant2);
+          }
+
+          50% {
+            background-color: var(--color-background-secondary);
+          }
+
+          100% {
+            background-color: var(--color-background-secondary-variant2);
+          }
+        }
+      }
     }
   }
 
-  .status {
+  .stats {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
 
-    .score {
-      font-size: var(--font-size-lg);
+    .divider {
+      display: none;
     }
-  }
 
-  min-height: 88px;
+    @include phone {
+      flex-direction: column;
 
-  &.skeleton {
-    background-color: var(--color-background-secondary-variant2);
+      .divider {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+        color: var(--color-secondary);
+        font-weight: var(--font-weight-semibold);
+        font-size: var(--font-size-sm);
+      }
 
-    &.loading {
-      animation: skeleton 1.5s infinite ease-in-out;
-
-
-      @keyframes skeleton {
-        0% {
-          background-color: var(--color-background-secondary-variant2);
-        }
-
-        50% {
-          background-color: var(--color-background-secondary);
-        }
-
-        100% {
-          background-color: var(--color-background-secondary-variant2);
-        }
+      .divider::before,
+      .divider::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: currentColor;
       }
     }
   }

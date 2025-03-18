@@ -6,6 +6,7 @@ import { AlertIcon, DefaultTeamLogo } from "@src/shared/assets/icons";
 import { MatchStatusCard } from "@src/features/MatchStatusCard";
 import classNames from "classnames";
 import { useSmoothValue } from "@src/shared/lib/hooks";
+import { TeamStatsCard } from "@src/features/TeamStatsCard";
 
 export type ListItemSkeletonProps = {
   isLoading: boolean;
@@ -31,12 +32,19 @@ export type ListItemProps = {
 export const ListItem = ({ match }: ListItemProps) => {
   return (
     <Card variant="darker" className={classes.card}>
-      <CommandLabel command={match.homeTeam.name} />
-      <MatchStatus
-        status={match.status}
-        score={[match.homeScore, match.awayScore]}
-      />
-      <CommandLabel command={match.awayTeam.name} />
+      <div className={classes.briefContent}>
+        <CommandLabel command={match.homeTeam.name} />
+        <MatchStatus
+          status={match.status}
+          score={[match.homeScore, match.awayScore]}
+        />
+        <CommandLabel command={match.awayTeam.name} />
+      </div>
+      <div className={classes.stats}>
+        <TeamStatsCard team={match.homeTeam} />
+        <Divider />
+        <TeamStatsCard team={match.awayTeam} />
+      </div>
     </Card>
   );
 };
@@ -68,3 +76,5 @@ const MatchStatus = ({
     </div>
   );
 };
+
+const Divider = () => <div className={classes.divider}>VS</div>;
