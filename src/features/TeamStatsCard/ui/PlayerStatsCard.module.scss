@@ -1,0 +1,46 @@
+.card {
+  padding: var(--spacing-xsmd) var(--spacing-sm);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+
+
+  @include phone {
+    flex-direction: column;
+    gap: var(--spacing-xsmd);
+    align-items: center;
+  }
+
+  .name {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xsmd);
+
+    .userpic {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      margin: auto;
+
+      @include phone {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    .username {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      font-weight: var(--font-weight-semibold);
+      font-size: var(--font-size-smmd);
+
+      @include phone {
+        max-width: 60px;
+      }
+    }
+  }
+
+}
