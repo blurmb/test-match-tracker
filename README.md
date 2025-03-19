@@ -19,7 +19,7 @@ swagger: [link](/docs/swagger.yaml)
 Figma макет: [link](https://www.figma.com/design/W16WfB86EgqtcuuqLCYjgF/Test-assignment?node-id=113-741&t=hBEv4NU9JHRNcUKm-4)
 ![reference png](/docs/ref.png)
 
-# 🚀 Тестовое задание 2 ![Static Badge](https://img.shields.io/badge/%E2%AC%9C%20-TBD-ed3939)
+# 🚀 Тестовое задание 2 ![Static Badge](https://img.shields.io/badge/Done-93e67c?logo=checkmarx)
 Допонить:
  * Обновляет данные в реальном времени (через WebSockets).
  -----
@@ -30,7 +30,14 @@ Figma макет: [link](https://www.figma.com/design/W16WfB86EgqtcuuqLCYjgF/Tes
  * Позволяет фильтровать события матча (например, только Live или только Finished).
  * Реализует анимацию изменения счета (например, плавное увеличение числа при обновлении).
  * Базовая адаптация экрана.
+ * Позволяет раскрыть детали матча.
 
-## 1. API-запрос
+## 1. Макет
+| Десктоп  | Телефон |
+| - | - |
+| <img src="docs/ref2_desktop.png" width="600"/> |<img src="docs/ref2_phone.png" width="300"/>  |
+
+
+## 2. API-запрос
 * Обновляет данные в реальном времени:
   * wss://app.ftoyd.com/fronttemp-service/ws
